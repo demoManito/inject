@@ -1,6 +1,6 @@
-## inject (golang dependency injection)
+## Inject (golang dependency injection)
 
-### About
+### About Inject
 
 `inject` is a simple dependency injection library for Go. based on tag `inject` to inject dependencies into struct fields.
 
