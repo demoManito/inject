@@ -11,7 +11,9 @@ package main
 
 import (
     "database/sql"
+
     "github.com/demoManito/inject"
+    "github.com/demoManito/injector"
 )
 
 type Handler struct {
@@ -24,6 +26,10 @@ type Service struct {
 
 type Dao struct {
     db *sql.DB `inject:"db"`
+}
+
+func init() {
+	inject.
 }
 
 func main() {
