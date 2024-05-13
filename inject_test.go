@@ -35,7 +35,6 @@ func TestNew(t *testing.T) {
 		t.Fatalf("funcs length is %d, not 3", len(funcs))
 	}
 
-	// handler := &Handler{}
 	handler := &Handler{}
 	New(injector.NewInjector()).Inject(handler)
 	if handler == nil {
