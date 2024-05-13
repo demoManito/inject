@@ -21,8 +21,8 @@ type Injector struct {
 	objs sync.Map
 }
 
-// NewInjector returns a new Injector instance.
-func NewInjector() *Injector {
+// New returns a new Injector instance.
+func New() *Injector {
 	once.Do(func() {
 		injector = &Injector{
 			objs: sync.Map{},

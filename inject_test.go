@@ -36,7 +36,7 @@ func TestNew(t *testing.T) {
 	}
 
 	handler := &Handler{}
-	New(injector.NewInjector()).Inject(handler)
+	New(injector.New()).Inject(handler)
 	if handler == nil {
 		t.Fatal("handler is nil")
 	}
