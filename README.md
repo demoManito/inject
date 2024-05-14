@@ -22,7 +22,8 @@ type Dao struct {
 
 func init() {
     inject.Register(func(injector inject.Injector) error {
-        injector.Register("dao", &Dao{DB: &sql.DB{}})
+		injector.Register("db",  &sql.DB{})
+        injector.Register("dao", &Dao{})
         return nil
     })
 }
