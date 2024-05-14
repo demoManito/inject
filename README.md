@@ -12,7 +12,7 @@ package service
 
 import (
     "github.com/demoManito/inject"
-    
+
     "github.com/xxx/dao"
 )
 
