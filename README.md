@@ -6,28 +6,6 @@
 
 ### Quick Start
 
-- service/service.go
-```go
-package service
-
-import (
-    "github.com/demoManito/inject"
-
-    "github.com/xxx/dao"
-)
-
-type Service struct {
-    dao *Dao `inject:"dao"`
-}
-
-func init() {
-    inject.Register(func(injector inject.Injector) error {
-        injector.Register("service", &Service{})
-        return nil
-    })
-}
-```
-
 - dao/dao.go
 ```go
 package dao
@@ -39,12 +17,34 @@ import (
 )
 
 type Dao struct {
-    db *sql.DB `inject:"db"`
+    DB *sql.DB `inject:"db"`
 }
 
 func init() {
     inject.Register(func(injector inject.Injector) error {
-        injector.Register("dao", &Dao{db: &sql.DB{}})
+        injector.Register("dao", &Dao{DB: &sql.DB{}})
+        return nil
+    })
+}
+```
+
+- service/service.go
+```go
+package service
+
+import (
+    "github.com/demoManito/inject"
+
+    "github.com/xxx/dao"
+)
+
+type Service struct {
+    Dao *Dao `inject:"dao"`
+}
+
+func init() {
+    inject.Register(func(injector inject.Injector) error {
+        injector.Register("service", &Service{})
         return nil
     })
 }
@@ -65,7 +65,7 @@ import (
 )
 
 type Handler struct {
-    service *Service `inject:"service"`
+    Service *Service `inject:"service"`
 }
 
 func main() {
@@ -73,6 +73,6 @@ func main() {
     inject.New(injector.New()).Inject(handler)
     
     // eg: use handler
-    handler.service.dao.db.Ping()
+    handler.Service.Dao.DB.Ping()
 }
 ```
