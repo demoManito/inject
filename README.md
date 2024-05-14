@@ -11,20 +11,20 @@
 package service
 
 import (
-	"github.com/demoManito/inject"
-	
+    "github.com/demoManito/inject"
+    
     "github.com/xxx/dao"
 )
 
 type Service struct {
-	dao *Dao `inject:"dao"`
+    dao *Dao `inject:"dao"`
 }
 
 func init() {
-	inject.Register(func(injector inject.Injector) error {
-		injector.Register("service", &Service{})
-		return nil
-	})
+    inject.Register(func(injector inject.Injector) error {
+        injector.Register("service", &Service{})
+        return nil
+    })
 }
 ```
 
@@ -44,7 +44,7 @@ type Dao struct {
 
 func init() {
     inject.Register(func(injector inject.Injector) error {
-		injector.Register("dao", &Dao{db: &sql.DB{}})
+        injector.Register("dao", &Dao{db: &sql.DB{}})
         return nil
     })
 }
@@ -60,8 +60,8 @@ import (
     "github.com/demoManito/inject"
     "github.com/demoManito/inject/injector"
 
-	_ "github.com/xxx/dao"
-	_ "github.com/xxx/service"
+    _ "github.com/xxx/dao"
+    _ "github.com/xxx/service"
 )
 
 type Handler struct {
@@ -71,7 +71,7 @@ type Handler struct {
 func main() {
     hanlder := &Handler{}
     inject.New(injector.New()).Inject(handler)
-	
+    
     // eg: use handler
     handler.service.dao.db.Ping()
 }
