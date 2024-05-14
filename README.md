@@ -25,7 +25,7 @@ func init() {
 		injector.Register("db",  &sql.DB{})
 		injector.Register("dao", &Dao{})
 		return nil
-    })
+	})
 }
 ```
 
@@ -66,7 +66,7 @@ import (
 )
 
 type Handler struct {
-    Service *service.Service `inject:"service"`
+	Service *service.Service `inject:"service"`
 }
 
 func main() {
