@@ -21,7 +21,7 @@ type Injector struct {
 	objs sync.Map
 }
 
-// New returns a new Injector instance.
+// New singleton pattern returns a new Injector instance.
 func New() *Injector {
 	once.Do(func() {
 		injector = &Injector{

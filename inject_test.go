@@ -18,7 +18,7 @@ type User struct {
 	Name string `inject:"name"`
 }
 
-func TestNew(t *testing.T) {
+func TestInject(t *testing.T) {
 	Register(func(injector Injector) error {
 		injector.Register("service", &Service{})
 		return nil
