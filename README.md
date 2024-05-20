@@ -16,16 +16,16 @@ import (
 	"github.com/demoManito/inject"
 )
 
-type Dao struct {
-	DB *sql.DB `inject:"db"`
-}
-
 func init() {
 	inject.Register(func(injector inject.Injector) error {
-		injector.Register("db",  &sql.DB{})
+		injector.Register("db", &sql.DB{})
 		injector.Register("dao", &Dao{})
 		return nil
 	})
+}
+
+type Dao struct {
+	DB *sql.DB `inject:"db"`
 }
 ```
 
@@ -39,15 +39,15 @@ import (
 	"github.com/xxx/xxx/dao"
 )
 
-type Service struct {
-	Dao *dao.Dao `inject:"dao"`
-}
-
 func init() {
 	inject.Register(func(injector inject.Injector) error {
 		injector.Register("service", &Service{})
 		return nil
 	})
+}
+
+type Service struct {
+	Dao *dao.Dao `inject:"dao"`
 }
 ```
 
