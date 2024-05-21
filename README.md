@@ -73,7 +73,7 @@ func main() {
 	hanlder := &Handler{}
 	inject.New(injector.New()).Inject(handler)
 
-	// eg: use handler
+	// eg: use handler, private fields can also be injected
 	handler.Service.Dao.DB.Ping()
 }
 ```
