@@ -71,7 +71,12 @@ type Handler struct {
 
 func main() {
 	hanlder := &Handler{}
+	
+	// choose one of the following methods:
+	// concurrency safe
 	inject.New(injector.New()).Inject(handler)
+	// concurrency unsafe, but faster
+	inject.New(injectorv2.New()).Inject(handler)
 
 	// eg: use handler, private fields can also be injected
 	handler.Service.Dao.DB.Ping()
